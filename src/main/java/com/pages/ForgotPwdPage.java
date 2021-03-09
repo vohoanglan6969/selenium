@@ -9,6 +9,7 @@ public class ForgotPwdPage {
 	public static String url = "http://qldt.vnec02:8890/password/reset";
 	private By emailTxt = By.id("email");
 	private By resetBtn = By.xpath("//*[@id='app']/main/div/div/form/div[2]/button");
+	private By errorMessage = By.xpath("//div[contains(@class,'alert alert-danger header-message')]");
 	
 	public ForgotPwdPage(WebDriver driver)
 	{
@@ -28,5 +29,10 @@ public class ForgotPwdPage {
 	public void clickForgotBtn()
 	{
 		driver.findElement(resetBtn).click();
+	}
+	
+	public String getErrorMessage()
+	{
+		return driver.findElement(errorMessage).getText().trim();
 	}
 }
